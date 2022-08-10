@@ -20,34 +20,42 @@ const Notes = () => {
   const [notesInfo, setNotesInfo] = useState([{}]);
   //Getting Notes from dataBase...
   const getNotes = async () => {
-    try {
-      const res = await axios.get(
-        `https://notesifyapp.herokuapp.com/getnotes${location.pathname}`
-      );
-      if (res.status === 200) {
-        const data = res.data;
-        setNotesInfo(data.notes);
+    if (location.pathname === "/notes-ify/") {
+      navigate("/");
+    } else {
+      try {
+        const res = await axios.get(
+          `https://notesifyapp.herokuapp.com/getnotes${location.pathname}`
+        );
+        if (res.status === 200) {
+          const data = res.data;
+          setNotesInfo(data.notes);
+          setTimeout(() => setIsLoading(false), 1000);
+        }
+      } catch (err) {
+        const data = err.data;
+        toast.error(data.msg, toastObject);
+        navigate("/error");
         setTimeout(() => setIsLoading(false), 1000);
       }
-    } catch (err) {
-      const data = err.data;
-      toast.error(data.msg, toastObject);
-      navigate("/error");
-      setTimeout(() => setIsLoading(false), 1000);
     }
   };
   // addto Cart functionality...
   const addToCart = async (note) => {
     try {
       setIsLoading(true);
-      const res = await axios.post("https://notesifyapp.herokuapp.com/addtocart", note, {
-        withCredentials: true,
-      });
+      const res = await axios.post(
+        "https://notesifyapp.herokuapp.com/addtocart",
+        note,
+        {
+          withCredentials: true,
+        }
+      );
       if (res.status === 200) {
         const data = res.data;
         console.log(data);
         toast.success(data.msg, toastObject);
-        setIsLoading(false)
+        setIsLoading(false);
         setCount(count++);
       }
     } catch (err) {
@@ -61,7 +69,7 @@ const Notes = () => {
     setIsLoading(true);
     getNotes();
   }, [location.pathname]);
-console.log(count);
+  console.log(count);
   return (
     <>
       <Navbar count={count} />
