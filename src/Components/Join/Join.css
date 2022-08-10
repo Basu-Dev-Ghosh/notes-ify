@@ -1,0 +1,49 @@
+.join-container{
+    margin-top: 90px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.join-ul{
+    width: 50%;
+    margin-bottom: 50px !important;
+}
+.join-ul li a{
+    background-color: #000 !important;
+    color: #fff !important;
+    padding: 10px;
+}
+.join-ul li .active{
+    background-color: #fbda57 !important;
+    color: #000 !important;
+}
+
+.tab-content form{
+    display: flex;
+    width: 100% !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.tab-content form input{
+    width: 400px !important;
+    margin: 0 !important;
+}
+.tab-content form button{
+    width: 200px !important;
+    padding: 8px !important;
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .tab-content form input{
+        width: 100% !important;
+    }
+    .join-ul{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}

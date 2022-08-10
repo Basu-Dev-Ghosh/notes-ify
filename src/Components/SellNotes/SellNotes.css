@@ -1,0 +1,127 @@
+.sell-note-container{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.sell-note-container .form-container{
+    width: 60%;
+    margin-top: 140px;
+}
+.sell-note-container .note-container{
+    width: 40%;
+}
+.form-container form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+form .form-control{
+    width: 200px !important;
+    margin: 0 15px;
+}
+form .btn-block{
+    background-color: #fbda57 !important;
+    padding: 15px;
+    border: 0;
+    color: #000;
+    transition: .3s ease;
+    width: 600px !important;
+    border-radius: 10px !important;
+    margin: 30px;
+    font-size: 20px;
+}
+.btn-block:hover{
+    background-color: #000;
+    color: #fff;
+}
+.note-container .card{
+    width: 270px !important;
+    margin: 50px 60px;
+    overflow: hidden;
+}
+.note-container .card img{
+    width: 300px ;
+    height: 260px !important;
+}
+.card .card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card-body h5{
+    font-size: 25px;
+}
+.card-body p{
+    font-weight: bold;
+}
+.card-body p i{
+    margin: 0 6px;
+}
+.card-body a{
+    background-color:#fbda57 !important;
+    color: #000;
+    outline: none;
+    border: 0;
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+}
+.card-body a:hover{
+    background-color: #000 !important;
+}
+
+
+@media only screen and (max-width: 827px){
+    .sell-note-container{
+        flex-direction: row;
+        flex-wrap: wrap-reverse;
+    }
+    .sell-note-container .form-container{
+        width: 100%;
+        margin-top: 40px;
+        padding: 10px;
+    }
+    form{
+        margin: 0 !important;
+    }
+    form .form-control{
+        width: 300px !important;
+    }
+    label{
+        text-align: center;
+    }
+    .note-container{
+        width: 100% !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+  .note-container .card img{
+       width: 300px;
+        height: 300px !important;
+    }
+    .card-body{
+        text-align: center;
+    }
+   form .btn-block{
+        width: 300px !important;
+    }
+   form .btn-block:hover{
+        background-color: #fbda57 !important;
+    }
+}
+@media only screen and (max-width: 327px){
+    form .form-control{
+        width: 200px !important;
+    }
+    form .btn-block{
+        width: 200px !important;
+    }
+    .note-container .card img{
+        width: 200px;
+         height: 200px !important;
+     }
+}

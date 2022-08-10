@@ -1,0 +1,41 @@
+
+.bg-warning{
+    background-color: #fbda57 !important;
+}
+
+.navbar-brand h3{
+font-family: 'Josefin Slab', serif;
+font-size: 30px;
+font-weight: bold;
+color:#3d3b33;
+margin-top: 8px;
+margin-left: 15px;
+}
+.nav-item{
+    margin-left: 15px !important;
+}
+.nav-link #sp{
+     font-size: 18px;
+     font-weight: bolder;
+    position: relative;
+    color: rgb(244, 37, 0);
+    top: -5px;
+    /* background-color: #000; */
+}
+.NavLink{
+    list-style: none;
+    text-decoration: none !important;
+}
+form{
+    margin-right: 40px !important;
+}
+form button:hover{
+    background-color: #000 !important;
+}
+.ripple-surface{
+    width: 70px !important;
+    max-height: 40px !important;
+}
+.btn-success:active{
+    min-width: 20px!important;
+}
