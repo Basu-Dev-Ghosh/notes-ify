@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route exact path="https://basu-dev-ghosh.github.io/noTes_ify/" element={<Home />} />
+        <Route exact path="/" element={<Home />} />
         <Route eaxct path="/showall" element={<ShowAll />} />
         <Route exact path="/sellnotes" element={<SellNotes />} />
         <Route exact path="/cart" element={<Cart />} />
