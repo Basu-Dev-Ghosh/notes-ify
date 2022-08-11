@@ -2,7 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../../node_modules/bootstrap/dist/js/bootstrap";
-import { HashRouter, Route } from "react-router-dom";
+import {  Route, Routes } from "react-router-dom";
 
 // Importing Components..........
 import Home from "../Home/Home";
@@ -15,14 +15,14 @@ import Join from "../Join/Join";
 function App() {
   return (
     <>
-      <HashRouter>
+      <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/showall" element={<ShowAll />} />
         <Route path="/sellnotes" element={<SellNotes />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/join" element={<Join />} />
         <Route path="/*" element={<Notes />} />
-      </HashRouter>
+      </Route>
     </>
   );
 }
