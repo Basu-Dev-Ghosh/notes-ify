@@ -16,7 +16,8 @@ const Notes = () => {
   // Setting State variables...
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
-  const [count, setCount] = useState(0);
+  const [isLoggedin, setIsLoggedin] = useState(false);
+  const [count,setCount]=useState(0);
   const [notesInfo, setNotesInfo] = useState([{}]);
   //Getting Notes from dataBase...
   const getNotes = async () => {
@@ -40,32 +41,53 @@ const Notes = () => {
       }
     }
   };
-  // addto Cart functionality...
-  const addToCart = async (note) => {
+  const getUserData = async () => {
     try {
-      setIsLoading(true);
-      const res = await axios.post(
-        "https://notesifyapp.herokuapp.com/addtocart",
-        note,
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await axios.get("https://notesifyapp.herokuapp.com/islogin", {
+        withCredentials: true,
+      });
       if (res.status === 200) {
-        const data = res.data;
-        console.log(data);
-        toast.success(data.msg, toastObject);
-        setIsLoading(false);
-        setCount(count++);
+        setIsLoggedin(true);
+        return true;
       }
     } catch (err) {
-      const data = err.data;
-      toast.error(data.msg, toastObject);
-      setIsLoading(false);
+      setIsLoggedin(false);
+      return false;
+    }
+  };
+  // addto Cart functionality...
+  const addToCart = async (note) => {
+ 
+    if (isLoggedin) {
+      try {
+        setIsLoading(true);
+        const res = await axios.post(
+          "https://notesifyapp.herokuapp.com/addtocart",
+          note,
+          {
+            withCredentials: true,
+          }
+        );
+        if (res.status === 200) {
+          const data = res.data;
+          console.log(data);
+          toast.success(data.msg, toastObject);
+          setIsLoading(false);
+          setCount(count+1);
+        }
+      } catch (err) {
+        const data = err.data;
+        toast.error(data.msg, toastObject);
+        setIsLoading(false);
+      }
+    } else {
+      toast.warning("Please Login or Signup", toastObject);
+      navigate("/join");
     }
   };
 
   useEffect(() => {
+    getUserData();
     setIsLoading(true);
     getNotes();
   }, [location.pathname]);
