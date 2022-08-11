@@ -22,7 +22,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/join" element={<Join />} />
         <Route path="/*" element={<Notes />} />
-      </Route>
+      </Routes>
     </>
   );
 }
