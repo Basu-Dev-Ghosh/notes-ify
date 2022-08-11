@@ -79,7 +79,7 @@ const Join = () => {
               toast.success(data.msg, toastObject);
               setIsLoading(false);
             }, 1000);
-            navigate('/cart')
+            navigate('/')
 
         }
       } catch (err) {

@@ -33,9 +33,12 @@ const Cart = () => {
   };
   const getCarts = async () => {
     try {
-      const res = await axios.get("https://notesifyapp.herokuapp.com/getcarts", {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        "https://notesifyapp.herokuapp.com/getcarts",
+        {
+          withCredentials: true,
+        }
+      );
       if (res.status === 200) {
         const data = res.data;
         setCarts(data.carts);
@@ -54,17 +57,19 @@ const Cart = () => {
   };
   const deleteCart = async (cart) => {
     try {
-      const res = await axios.post("https://notesifyapp.herokuapp.com/deletecart", cart, {
-        withCredentials: true,
-      });
+      const res = await axios.post(
+        "https://notesifyapp.herokuapp.com/deletecart",
+        cart,
+        {
+          withCredentials: true,
+        }
+      );
 
       if (res.status === 200) {
         const data = res.data;
         setCarts((oldcarts) => {
           return oldcarts.filter((car) => {
-            return (
-              car.ChapterName !== cart.ChapterName
-            );
+            return car.ChapterName !== cart.ChapterName;
           });
         });
         toast.success(data.msg, toastObject);
@@ -101,33 +106,37 @@ const Cart = () => {
         </div>
       ) : (
         <div className="container cart-container">
-          {carts.map((cart) => {
-            return (
-              <div class="card cart-card">
-                <div class="card-body cart-card-body">
-                  <h5 class="card-title">{cart.ChapterName}</h5>
-                  <p class="card-text">{cart.SubjectName}</p>
-                  <p>price:{cart.Price}</p>
-                  <a
-                    onClick={() => {
-                      buyInfo(cart);
-                    }}
-                    class="btn btn-primary"
-                  >
-                    Buy Now
-                  </a>
-                  <a
-                    onClick={() => {
-                      deleteCart(cart);
-                    }}
-                    class="btn btn-danger"
-                  >
-                    Remove
-                  </a>
+          {carts.length === 0 ? (
+            <h1>No cart item </h1>
+          ) : (
+            carts.map((cart) => {
+              return (
+                <div class="card cart-card">
+                  <div class="card-body cart-card-body">
+                    <h5 class="card-title">{cart.ChapterName}</h5>
+                    <p class="card-text">{cart.SubjectName}</p>
+                    <p>price:{cart.Price}</p>
+                    <a
+                      onClick={() => {
+                        buyInfo(cart);
+                      }}
+                      class="btn btn-primary"
+                    >
+                      Buy Now
+                    </a>
+                    <a
+                      onClick={() => {
+                        deleteCart(cart);
+                      }}
+                      class="btn btn-danger"
+                    >
+                      Remove
+                    </a>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })
+          )}
         </div>
       )}
       <ToastContainer />
